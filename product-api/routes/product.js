@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');
 
-// CREATE
+
 router.post('/', async (req, res) => {
   try {
     const product = new Product(req.body);
@@ -13,13 +13,14 @@ router.post('/', async (req, res) => {
   }
 });
 
-// READ all
+
 router.get('/', async (req, res) => {
   const products = await Product.find();
   res.json(products);
 });
 
-// READ one
+
+
 router.get('/:id', async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -30,7 +31,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// UPDATE
+
+
 router.put('/:id', async (req, res) => {
   try {
     const updated = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -41,7 +43,8 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE
+
+
 router.delete('/:id', async (req, res) => {
   try {
     const deleted = await Product.findByIdAndDelete(req.params.id);
